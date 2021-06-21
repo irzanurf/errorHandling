@@ -1,24 +1,25 @@
+
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">List Daftar Pengaduan</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Mahasiswa</h1>
                    
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        
                         <div class="card-body">
+                        
+                        <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}?>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Tgl Pengaduan</th>
-                                            <th>Tujuan</th>
-                                            <th>Subjek</th>
-                                            <th style="text-align:center">status</th>
+                                            <th>NIM</th>
+                                            <th>Nama</th>
+                                            <th>Program Studi</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -29,40 +30,25 @@
                                     </tfoot>
                                     <tbody>
                                     <?php 
-                                    foreach($view as $v) { 
-                                        $tgl_kirim = date('d-m-Y', strtotime($v->tgl_kirim));?>
+                                    foreach($mhs as $m) { ?>
                                         <tr>
-                                            <td><?= $tgl_kirim ?></td>
-                                            <td><?= $v->nama ?></td>
-                                            <td><?= $v->subjek ?></td>
-                                            <td style="text-align:center">
-                                                <?php if(($v->status==0)): ?>
-                                                    <img src="<?= base_url('assets/sent.png');?>" alt="sent" width="30" height="30"/>
-                                                <?php elseif(($v->status==1)): ?>
-                                                    <img src="<?= base_url('assets/open.png');?>" alt="open" width="30" height="30"/>
-                                                <?php elseif(($v->status==2)): ?>
-                                                    <img src="<?= base_url('assets/received.png');?>" alt="received" width="30" height="30"/>
-                                                <?php else : ?>
-                                                    -
-                                                <?php endif; ?>
-                                            </td>
+                                            <td><?= $m->username ?></td>
+                                            <td><?= $m->nama ?></td>
+                                            <td><?= $m->prod ?></td>
                                             <td>
-                                                
-                                            <?php if (($v->status)==0 || ($v->status)==1 ) :?> 
-                                                <form style="display:inline-block;" method="post" action="<?= base_url('Mhs/detail_pengaduan');?>">
-                                                <input type='hidden' name="id" value="<?= $v->id ?>">
-                                                <button type="Submit" class="btn btn-info">
-                                                Detail
+                                                <form style="display:inline-block;" method="post" action="<?= base_url('admin/akun_mhs');?>">
+                                                <input type='hidden' name="username" value="<?= $m->username ?>">
+                                                <button type="Submit" class="btn btn-primary">
+                                                Akun
                                                 </button>
                                                 </form>
-                                            <?php else : ?>
-                                                <form style="display:inline-block;" method="post" action="<?= base_url('Mhs/balas_pengaduan');?>">
-                                                <input type='hidden' name="id" value="<?= $v->id ?>">
-                                                <button type="Submit" class="btn btn-success">
-                                                Balasan
+
+                                                <form style="display:inline-block;" method="post" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?');" action="<?= base_url('admin/delete_mhs');?>">
+                                                <input type='hidden' name="username" value="<?= $m->username ?>">
+                                                <button type="Submit" class="btn btn-danger">
+                                                Hapus
                                                 </button>
                                                 </form>
-                                            <?php endif; ?>
                                             </td>
                                         </tr>
                                         <?php } ?>

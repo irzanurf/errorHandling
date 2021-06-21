@@ -9,10 +9,12 @@ class Welcome extends CI_Controller {
         //load model admin
         $this->load->model('M_Login');
         $this->load->model('M_Dosen');
-        
+        $this->load->model('M_Mhs');
+        $this->load->model('M_Akun');
+        $this->load->model('M_Prodi');
     }
 
-	public function index()
+    public function index()
 	{
 		if($this->M_Login->is_logged_in())
             {
@@ -26,7 +28,30 @@ class Welcome extends CI_Controller {
                     redirect('Mhs');
                 }
 
-            }else{
+            }
+        else{
+            $data['prodi']= $this->M_Prodi->get_prodi()->result();
+            $this->load->view('home',$data);
+        }
+
+    }
+
+	public function login()
+	{
+		if($this->M_Login->is_logged_in())
+            {
+                //jika memang session sudah terdaftar, maka redirect ke halaman dahsboard
+                //redirect berdasarkan level user
+                if($this->session->userdata("role") == "1"){
+                    redirect('Admin');
+                }else if($this->session->userdata("role") == "2"){
+                    redirect('Dosen');
+                }else if($this->session->userdata("role") == "3"){
+                    redirect('Mhs');
+                }
+
+            }
+        else{
 
                 //jika session belum terdaftar
 
@@ -73,9 +98,8 @@ class Welcome extends CI_Controller {
                     }
                 }else{
 
-                    $data['error'] = '<div class="alert alert-danger" style="margin-top: 3px">
-                        <div class="header"><b><i class="fa fa-exclamation-circle"></i> ERROR</b> username atau password salah!</div></div>';
-                    $this->load->view('login', $data);
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger alert-block" align="center"><strong>username atau password salah!</strong></div>');
+                    redirect("Welcome/login");
                 }
 
             }else{
@@ -84,6 +108,32 @@ class Welcome extends CI_Controller {
             }
 
         }
+
+    }
+
+    public function submit()
+	{
+		$nim = $this->input->post('nim',true);
+        $nama = $this->input->post('nama',true);
+        $prodi = $this->input->post('prodi',true);
+        $email = $this->input->post('email',true);
+        $hp = $this->input->post('hp',true);
+        $data = [
+            "username"=>$nim,
+            "nama"=>$nama,
+            "prodi"=>$prodi,
+            "email"=>$email,
+            "hp"=>$hp,
+        ];
+        $this->M_Mhs->insert_mahasiswa($nim,$data);
+        $akun = [
+            "username"=>$nim,
+            "password"=>MD5($nim),
+            "role"=>3,
+        ];
+        $this->M_Akun->insert_akun($nim,$akun);
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-block" align="center"><strong>Silahkan login menggunakan NIM untuk username dan password</strong></div>');
+        redirect("Welcome/login"); 
 
     }
 

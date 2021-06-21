@@ -48,7 +48,7 @@
                                             </td>
                                             <td>
                                                 
-                                            <?php if (($v->balasan)=="" || ($v->balasan)==0 || ($v->balasan)==NULL) :?> 
+                                            <?php if (($v->status)==0 || ($v->status)==1 ) :?> 
                                                 <form style="display:inline-block;" method="post" action="<?= base_url('Dosen/balas_pengaduan');?>">
                                                 <input type='hidden' name="id" value="<?= $v->id ?>">
                                                 <button type="Submit" class="btn btn-primary">

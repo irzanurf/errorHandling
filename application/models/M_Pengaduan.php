@@ -82,6 +82,7 @@ class M_Pengaduan extends CI_Model
     public function insert_pengaduan($data)
     {
         $this->db->insert('tb_pengaduan',$data);
+        return $this->db->insert_id();
     }
 
     public function update_pengaduan($data,$id)

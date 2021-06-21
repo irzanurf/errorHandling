@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Error Handling</title>
+    <title>Sistem Pengaduan</title>
     <link rel="stylesheet" href="<?= base_url('assets/searchable/chosen.css');?>">
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/main/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet" type="text/css">
@@ -36,7 +36,7 @@
                 <div class="sidebar-brand-icon">
                 <img src="<?= base_url('assets/undip.png');?>" alt="logo" width="47" height="54"/>
                 </div>
-                <div class="sidebar-brand-text mx-3"><sup>Error</sup> Handling</div>
+                <div class="sidebar-brand-text mx-3"><sup>Sistem</sup> Pengaduan</div>
             </a>
 
             <!-- Divider -->

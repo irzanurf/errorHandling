@@ -29,10 +29,17 @@
                                     <input class="form-control" name="status" value="<?= $dosen->status_pegawai ?>">
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Program Studi</label>
-                                    <input class="form-control" name="prodi" value="<?= $dosen->prodi ?>">
-                                </div>
+                                <div class="form-group"><label>Program Studi</label><label style="color:red; font-size:12px;"> (*Wajib diisi)</label>
+                                    <select class="form-control" name="prodi" required="">
+                                    <option value="">Please Select</option>
+                                        <?php
+                                        foreach ($prodi as $p) {
+                                            ?>
+                                           <option value="<?php echo $p->id; ?>"<?php echo ($dosen->prodi==$p->id) ? "selected='selected'" : "" ?>><?php echo $p->prodi; ?> </option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select></div>
 
                                 <div class="form-group">
                                     <button type="submit" id="submit" class="btn btn-success">Submit</button>

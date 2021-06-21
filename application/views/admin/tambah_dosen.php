@@ -30,8 +30,17 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Program Studi</label>
-                                    <input class="form-control" name="prodi">
+                                    <label>Program Studi</label><label style="color:red; font-size:12px;"> (*Wajib diisi)</label>
+                                    <select class="form-control form-control-user" name="prodi"  required="">
+                                        <option value="">Please Select</option>
+                                        <?php
+                                        foreach ($prodi as $p) {
+                                            ?>
+                                           <option value="<?php echo $p->id; ?>"><?php echo $p->prodi; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">

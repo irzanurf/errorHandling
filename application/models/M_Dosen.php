@@ -4,12 +4,21 @@ class M_Dosen extends CI_Model
 {
     public function getwhere_dosen(array $data)
     {
-        return $this->db->get_where('tb_dosen', $data);
+        $query = $this->db->select('tb_dosen.*,tb_prodi.prodi as prod')
+        ->from('tb_dosen')
+        ->join('tb_prodi','tb_dosen.prodi=tb_prodi.id','inner')
+        ->where($data)
+        ->get();
+        return $query;
     }
     
     public function get_dosen()
     {
-        return $this->db->get('tb_dosen');
+        $query = $this->db->select('tb_dosen.*,tb_prodi.prodi as prod')
+        ->from('tb_dosen')
+        ->join('tb_prodi','tb_dosen.prodi=tb_prodi.id','inner')
+        ->get();
+        return $query;
         
     }
 

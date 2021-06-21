@@ -13,8 +13,7 @@
     </div>
     <div class="col-lg-8" style="float:none;margin:auto;">
     <!-- /.row -->
-    <form action="<?= base_url('Mhs/add_pengaduan');?>" method="post" enctype="multipart/form-data">
-                                
+    
                             <div class="form-group">
                                     <label>Dosen</label>
                                     <input class="form-control" value="<?= $view->nama?>" readonly>
@@ -27,9 +26,19 @@
 
                             <div class="form-group">
                             <label>Pengaduan</label>
-                                <textarea name="pengaduan" id="editor" rows="20" readonly><?= $view->pesan?></textarea><br/>
-                                </div>
-                            </form>
+                                <textarea name="pengaduan" id="editor" rows="20" readonly><?= $view->pesan?></textarea>
+                            </div>
+
+                            <?php if (!empty($view->file_kirim)) : ?>
+                            <div class="form-group"> 
+								<label for="exampleInputFile">File Lampiran</label><br> 
+								<button method="post" onclick=" window.open('<?= base_url('assets/kirim');?>/<?=$view->file_kirim?>', '_blank'); return false;" class="btn btn-primary-outline"><img src="<?= base_url('assets/attach.png');?>" alt="attach" width="50" height="50"/></button>
+                            </div> 
+
+                            <?php else : ?>
+
+                            <?php endif; ?>
+
 
    
     <!-- /.row -->

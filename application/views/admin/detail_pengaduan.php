@@ -36,15 +36,25 @@
 
                             <div class="form-group">
                                 <label>Pengaduan</label>
-                                <textarea name="pengaduan" id="editor" rows="20" readonly><?= $view->pesan?></textarea><br/>
+                                <textarea name="pengaduan" id="editor" rows="20" readonly><?= $view->pesan?></textarea>
                                 </div>
                             
-                            <h4>Balas Pesan Pengaduan</h4>
+                            <?php if (!empty($view->file_kirim)) : ?>
+                            <div class="form-group"> 
+								<label for="exampleInputFile">File Lampiran</label><br> 
+								<button method="post" onclick=" window.open('<?= base_url('assets/kirim');?>/<?=$view->file_kirim?>', '_blank'); return false;" class="btn btn-primary-outline"><img src="<?= base_url('assets/attach.png');?>" alt="attach" width="50" height="50"/></button>
+                            </div> 
+
+                            <?php else : ?>
+
+                            <?php endif; ?>
+                            
+                            <br><h4>Balas Pesan Pengaduan</h4>
                             
                             <?php if(!empty($view->balasan)) : ?>
                             <div class="form-group">
                                 <label>Balas</label>
-                                <textarea name="balas" id="editor1" rows="20" readonly><?= $view->balasan?></textarea><br/>
+                                <textarea name="balas" id="editor1" rows="20" readonly><?= $view->balasan?></textarea>
                             </div>
 
                             <?php else : ?>
@@ -53,6 +63,18 @@
                                 <textarea name="balas" id="editor1" rows="20" readonly><b><i>Belum ada balasan</i></b></textarea><br/>
                             </div>
                             <?php endif ?>
+
+                            <?php if (!empty($view->file_balas)) : ?>
+                            <div class="form-group"> 
+								<label for="exampleInputFile">File Lampiran</label><br> 
+								<button method="post" onclick=" window.open('<?= base_url('assets/balas');?>/<?=$view->file_balas?>', '_blank'); return false;" class="btn btn-primary-outline"><img src="<?= base_url('assets/attach.png');?>" alt="attach" width="50" height="50"/></button>
+                            </div> 
+
+                            <?php else : ?>
+
+                            <?php endif; ?>
+
+                            
                         </form>
 
    

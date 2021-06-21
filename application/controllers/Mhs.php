@@ -54,7 +54,25 @@ class Mhs extends CI_Controller {
             "tgl_kirim"=>$date,
             "status"=>0,
         ];
-        $this->M_Pengaduan->insert_pengaduan($data);
+        $id = $this->M_Pengaduan->insert_pengaduan($data);
+        $file = $_FILES['file'];
+        if(empty($file['name'])){}
+            else{
+            $config['upload_path'] = './assets/kirim';
+            $config['encrypt_name'] = TRUE;
+            $config['allowed_types'] = '*';
+
+            $this->load->library('upload',$config);
+            if(!$this->upload->do_upload('file')){
+                echo "Upload Gagal"; die();
+            } else {
+                $file=$this->upload->data('file_name');
+            }
+            $datafile = [
+            "file_kirim"=>$file,];
+            $this->M_Pengaduan->update_pengaduan($datafile,$id);
+        }
+        
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-block" align="center"><strong>Pengaduan Terkirim</strong></div>');
         redirect("Mhs/daftar_pengaduan"); 
     }

@@ -38,6 +38,12 @@
                             <label>Pengaduan</label>
                                 <textarea name="pengaduan" id="editor" rows="20" required=""></textarea><br/>
                                 </div>
+                            
+                            <div class="form-group"> 
+								<label for="exampleInputFile">File Lampiran</label><br> 
+								<input type="file" name="file" > <br>
+                                <label style="color:red; font-size:12px;">maks 10mb</label>
+                            </div> 
 
                                 <div class="form-group">
                                     <button type="submit" id="submit" class="btn btn-success">Submit</button>

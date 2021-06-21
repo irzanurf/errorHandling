@@ -34,7 +34,7 @@
                                         <tr>
                                             <td><?= $d->username ?></td>
                                             <td><?= $d->nama ?></td>
-                                            <td><?= $d->prodi ?></td>
+                                            <td><?= $d->prod ?></td>
                                             <td>
                                                 <form style="display:inline-block;" method="post" action="<?= base_url('admin/akun');?>">
                                                 <input type='hidden' name="username" value="<?= $d->username ?>">

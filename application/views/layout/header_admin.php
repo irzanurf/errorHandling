@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Error Handling</title>
+    <title>Sistem Pengaduan</title>
     <link rel="stylesheet" href="<?= base_url('assets/searchable/chosen.css');?>">
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/main/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet" type="text/css">
@@ -29,14 +29,14 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="background-image : linear-gradient(194deg,#953be7 10%,#cc0bce 100%);" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="background-image : linear-gradient(194deg,#5161E9 10%,#5161E9 100%);" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="welcome">
                 <div class="sidebar-brand-icon">
                 <img src="<?= base_url('assets/undip.png');?>" alt="logo" width="47" height="54"/>
                 </div>
-                <div class="sidebar-brand-text mx-3"><sup>Error</sup> Handling</div>
+                <div class="sidebar-brand-text mx-3"><sup>Sistem</sup> Pengaduan</div>
             </a>
 
             <!-- Divider -->
@@ -68,13 +68,19 @@
                 <a class="nav-link" href="<?= base_url('admin/berita');?>">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Pengumuman</span></a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/dosen');?>">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Dosen</span></a>
-            </li> -->
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/mhs');?>">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Mahasiswa</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
