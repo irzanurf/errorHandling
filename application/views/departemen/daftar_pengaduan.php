@@ -1,24 +1,26 @@
-
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Dosen</h1>
+                    <h1 class="h3 mb-2 text-gray-800">List Daftar Pengaduan</h1>
                    
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
+                        
                         <div class="card-body">
-                        <a href="<?=base_url('Admin/tambah_dosen');?>"><button class='btn btn-info'><i class="fa fa-plus"></i> Tambah</button></a>
-                        <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}?>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>NIP</th>
-                                            <th>Nama</th>
+                                            <th>Tgl Pengaduan</th>
+                                            <th>Kategori</th>
+                                            <th>Pengirim</th>
+                                            <th>Tujuan</th>
+                                            <th>Subjek</th>
+                                            <th style="text-align:center">status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -29,29 +31,30 @@
                                     </tfoot>
                                     <tbody>
                                     <?php 
-                                    foreach($dosen as $d) { ?>
+                                    foreach($view as $v) { 
+                                        $tgl_kirim = date('d-m-Y', strtotime($v->tgl_kirim));?>
                                         <tr>
-                                            <td><?= $d->username ?></td>
-                                            <td><?= $d->nama ?></td>
+                                            <td><?= $tgl_kirim ?></td>
+                                            <td><?= $v->kategori ?></td>
+                                            <td><?= $v->mhs ?></td>
+                                            <td><?= $v->dsn ?></td>
+                                            <td><?= $v->subjek ?></td>
+                                            <td style="text-align:center">
+                                                <?php if(($v->status==0)): ?>
+                                                    <img src="<?= base_url('assets/sent.png');?>" alt="new" width="30" height="30"/>
+                                                <?php elseif(($v->status==1)): ?>
+                                                    <img src="<?= base_url('assets/open.png');?>" alt="open" width="30" height="30"/>
+                                                <?php elseif(($v->status==2)): ?>
+                                                    <img src="<?= base_url('assets/received.png');?>" alt="received" width="30" height="30"/>
+                                                <?php else : ?>
+                                                    -
+                                                <?php endif; ?>
+                                            </td>
                                             <td>
-                                                <form style="display:inline-block;" method="post" action="<?= base_url('admin/akun');?>">
-                                                <input type='hidden' name="username" value="<?= $d->username ?>">
-                                                <button type="Submit" class="btn btn-primary">
-                                                Akun
-                                                </button>
-                                                </form>
-
-                                                <form style="display:inline-block;" method="post" action="<?= base_url('admin/edit_dosen');?>">
-                                                <input type='hidden' name="username" value="<?= $d->username ?>">
-                                                <button type="Submit" class="btn btn-info">
-                                                Edit
-                                                </button>
-                                                </form>
-
-                                                <form style="display:inline-block;" method="post" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?');" action="<?= base_url('admin/delete_dosen');?>">
-                                                <input type='hidden' name="username" value="<?= $d->username ?>">
-                                                <button type="Submit" class="btn btn-danger">
-                                                Hapus
+                                                <form style="display:inline-block;" method="post" action="<?= base_url('Departemen/detail_pengaduan');?>">
+                                                <input type='hidden' name="id" value="<?= $v->id ?>">
+                                                <button type="Submit" class="btn btn-success">
+                                                Detail
                                                 </button>
                                                 </form>
                                             </td>

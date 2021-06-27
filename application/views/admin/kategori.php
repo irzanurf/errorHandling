@@ -5,20 +5,24 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Dosen</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Kategori</h1>
                    
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">
-                        <a href="<?=base_url('Admin/tambah_dosen');?>"><button class='btn btn-info'><i class="fa fa-plus"></i> Tambah</button></a>
+                        
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addForm"> <i class="fa fa-plus"></i> Tambah</button>
                         <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}?>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <col style='width:5%'>
+                                <col style='width:70%'>
+                                <col style='width:25%'>
                                     <thead>
                                         <tr>
-                                            <th>NIP</th>
-                                            <th>Nama</th>
+                                            <th>No.</th>
+                                            <th>Kategori</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -29,27 +33,18 @@
                                     </tfoot>
                                     <tbody>
                                     <?php 
-                                    foreach($dosen as $d) { ?>
+                                    $no = 1;
+                                    foreach($kategori as $k) { ?>
                                         <tr>
-                                            <td><?= $d->username ?></td>
-                                            <td><?= $d->nama ?></td>
+                                            <td><?= $no++?></td>
+                                            <td><?= $k->kategori ?></td>
                                             <td>
-                                                <form style="display:inline-block;" method="post" action="<?= base_url('admin/akun');?>">
-                                                <input type='hidden' name="username" value="<?= $d->username ?>">
-                                                <button type="Submit" class="btn btn-primary">
-                                                Akun
-                                                </button>
-                                                </form>
-
-                                                <form style="display:inline-block;" method="post" action="<?= base_url('admin/edit_dosen');?>">
-                                                <input type='hidden' name="username" value="<?= $d->username ?>">
-                                                <button type="Submit" class="btn btn-info">
+                                                <button type="button" style="display:inline-block;" class="btn btn-info" data-toggle="modal" data-target="#kategori<?= $k->id?>">
                                                 Edit
                                                 </button>
-                                                </form>
 
-                                                <form style="display:inline-block;" method="post" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?');" action="<?= base_url('admin/delete_dosen');?>">
-                                                <input type='hidden' name="username" value="<?= $d->username ?>">
+                                                <form style="display:inline-block;" method="post" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?');" action="<?= base_url('admin/delete_kategori');?>">
+                                                <input type='hidden' name="id" value="<?= $k->id ?>">
                                                 <button type="Submit" class="btn btn-danger">
                                                 Hapus
                                                 </button>
@@ -68,7 +63,48 @@
 
             </div>
             <!-- End of Main Content -->
-
+<!-- modal tambah -->
+<div class="modal fade" id="addForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <form role="form" method="post" action="<?= base_url('admin/addKategori');?>">
+                <div class="modal-body">
+                <label>Nama Kategori</label>
+                <input type="text" class="form-control" name="kategori" required="">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+<!-- modal edit -->
+<?php 
+    foreach ($kategori as $k) :
+    $id=$k->id;
+?>
+<div class="modal fade" id="kategori<?= $id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <form role="form" method="post" action="<?= base_url('admin/updateKategori');?>">
+                <div class="modal-body">
+                <label>Nama Kategori</label>
+                <input type="text" class="form-control" name="kategori" value="<?= $k->kategori ?>" required="" >
+                <input type="hidden" class="form-control" name="id" value=<?=$id?>  >
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <?php endforeach;?>
             <!-- Footer -->
             <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

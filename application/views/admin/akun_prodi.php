@@ -10,30 +10,21 @@
     <?= form_open_multipart('Admin/changePass');?>
                                 
                                 <div class="form-group">
-                                    <label>NIP/Username</label>
-                                    <input class="form-control" name="username" value="<?= $dosen->username ?>" disabled>
+                                    <label>Username</label>
+                                    <input class="form-control" name="username" value="<?= $prodi->username ?>" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Nama</label>
-                                    <input class="form-control" name="nama" value="<?= $dosen->nama ?>" disabled>
+                                    <label>Program Studi</label>
+                                    <input class="form-control" name="nama" value="<?= $prodi->prodi ?>" disabled>
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label>Jabatan</label>
-                                    <input class="form-control" name="jabatan" value="<?= $dosen->jabatan ?>" disabled>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Status Kepegawaian</label>
-                                    <input class="form-control" name="status" value="<?= $dosen->status_pegawai ?>" disabled>
-                                </div>
-
+                                
                                 <h3>Ganti Password</h3>
                                 <div class="form-group"><label>Password Baru</label><input class="form-control" type="password" name="pass" id="txtPassword"  ></div>
                                 <div class="form-group"><label>Ulangi Password</label><input class="form-control" type="password" name="re" id="txtConfirmPassword"  ></div>
                                 <div class="form-group">
-                                    <input type="hidden" class="form-control" name="username" value="<?= $dosen->username ?>">
+                                    <input type="hidden" class="form-control" name="username" value="<?= $prodi->username ?>">
                                 </div>
                                 <div class="form-group">
                                 <button id="btnSubmit" type="submit" class="btn btn-success" onclick="return Validate()">Submit</button>

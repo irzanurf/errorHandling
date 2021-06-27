@@ -32,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="background-image : linear-gradient(194deg,#5161E9 10%,#5161E9 100%);" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="welcome">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('/');?>">
                 <div class="sidebar-brand-icon">
                 <img src="<?= base_url('assets/undip.png');?>" alt="logo" width="47" height="54"/>
                 </div>
@@ -51,9 +51,22 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('Admin/daftar_pengaduan');?>">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-list-alt"></i>
-                    <span>Daftar Pengaduan</span></a>
+                    <span>Daftar Pengaduan</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Kategori:</h6>
+                        <a class="collapse-item" href="<?= base_url('Admin/daftar_pengaduan');?>">Semua</a>
+                        <?php
+                        foreach($kategori as $k) {
+                        ?>
+                        <a class="collapse-item" href="<?= base_url('Admin/kategori_pengaduan');?>/<?=$k->id?>"><?=$k->kategori?></a>
+                        <?php } ?>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -64,11 +77,11 @@
                 Addons
             </div>
 
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/berita');?>">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Pengumuman</span></a>
-            </li> -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/dosen');?>">
@@ -80,6 +93,18 @@
                 <a class="nav-link" href="<?= base_url('admin/mhs');?>">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Mahasiswa</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/prodi');?>">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Program Studi</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/kategori');?>">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Kategori</span></a>
             </li>
 
             <!-- Divider -->

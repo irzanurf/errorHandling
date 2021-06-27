@@ -15,6 +15,7 @@ class Mhs extends CI_Controller {
         }
         $this->load->model('M_Pengumuman');
         $this->load->model('M_Dosen');
+        $this->load->model('M_Kategori');
         $this->load->model('M_Pengaduan');
         
     }
@@ -32,7 +33,10 @@ class Mhs extends CI_Controller {
     public function form_pengaduan()
     {
         $username = $this->session->userdata('username');
-        $data['dosen']= $this->M_Dosen->get_dosen()->result();
+        $prodi = $this->M_Pengumuman->get_prodi(array('username'=>$username))->row()->prodi;
+        $cek = $data['dosen']= $this->M_Dosen->getview_dosen(array('tb_dosprod.prodi'=>$prodi))->result();
+        print_r($cek);
+        $data['kategori']= $this->M_Kategori->get_kategori()->result();
         $nama['nama'] = $this->M_Pengumuman->get_mhs(array('username'=>$username))->row();
         $this->load->view('layout/header_mhs', $nama);
         $this->load->view('mhs/form_pengaduan', $data);
@@ -42,7 +46,10 @@ class Mhs extends CI_Controller {
     public function add_pengaduan()
     {
         $username = $this->session->userdata('username');
+        $prodi = $this->M_Pengumuman->get_prodi(array('username'=>$username))->row()->prodi;
+        $username = $this->session->userdata('username');
         $date = date('Y-m-d');
+        $kategori = $this->input->post('kategori',true);
         $tujuan = $this->input->post('dosen',true);
         $subjek = $this->input->post('subjek',true);
         $pengaduan = $this->input->post('pengaduan',true);
@@ -51,7 +58,9 @@ class Mhs extends CI_Controller {
             "pengadu"=>$username,
             "pesan"=>$pengaduan,
             "subjek"=>$subjek,
+            "id_kategori"=>$kategori,
             "tgl_kirim"=>$date,
+            "id_prodi"=>$prodi,
             "status"=>0,
         ];
         $id = $this->M_Pengaduan->insert_pengaduan($data);
@@ -90,6 +99,9 @@ class Mhs extends CI_Controller {
     public function detail_pengaduan()
     {
         $id = $this->input->post('id');
+        if($id==NULL){
+            redirect("Mhs/daftar_pengaduan");
+        }
         $username = $this->session->userdata('username');
         $nama['nama'] = $this->M_Pengumuman->get_mhs(array('username'=>$username))->row();
         $data['view'] = $this->M_Pengaduan->getwhere_pengaduan($id)->row();
@@ -101,6 +113,9 @@ class Mhs extends CI_Controller {
     public function balas_pengaduan()
     {
         $id = $this->input->post('id');
+        if($id==NULL){
+            redirect("Mhs/daftar_pengaduan");
+        }
         $username = $this->session->userdata('username');
         $nama['nama'] = $this->M_Pengumuman->get_mhs(array('username'=>$username))->row();
         $data['view'] = $this->M_Pengaduan->getwhere_pengaduan($id)->row();

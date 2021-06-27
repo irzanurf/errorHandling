@@ -41,6 +41,9 @@ class Dosen extends CI_Controller {
     public function balas_pengaduan()
     {
         $id = $this->input->post('id');
+        if($id==NULL){
+            redirect("Dosen/daftar_pengaduan");
+        }
         $username = $this->session->userdata('username');
         $nama['nama'] = $this->M_Pengumuman->get_dosen(array('username'=>$username))->row();
         $data = [
@@ -89,6 +92,9 @@ class Dosen extends CI_Controller {
     public function detail_pengaduan()
     {
         $id = $this->input->post('id');
+        if($id==NULL){
+            redirect("Dosen/daftar_pengaduan");
+        }
         $username = $this->session->userdata('username');
         $nama['nama'] = $this->M_Pengumuman->get_dosen(array('username'=>$username))->row();
         $data['view'] = $this->M_Pengaduan->getwhere_pengaduan_dosen($id)->row();

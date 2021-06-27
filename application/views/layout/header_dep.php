@@ -29,7 +29,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="background-image : linear-gradient(86deg,#1b46c4 10%,#36b9cc 100%);" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="background-image : linear-gradient(194deg,#5161E9 10%,#5161E9 100%);" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('/');?>">
@@ -44,27 +44,34 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('mhs');?>">
+                <a class="nav-link" href="<?= base_url('Departemen');?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('mhs/form_pengaduan');?>">
-                    <i class="fas fa-fw fa-edit"></i>
-                    <span>Form Pengaduan</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('mhs/daftar_pengaduan');?>">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Daftar Pengaduan</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-list-alt"></i>
+                    <span>Daftar Pengaduan</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Kategori:</h6>
+                        <a class="collapse-item" href="<?= base_url('Departemen/daftar_pengaduan');?>">Semua</a>
+                        <?php
+                        foreach($kategori as $k) {
+                        ?>
+                        <a class="collapse-item" href="<?= base_url('Departemen/kategori_pengaduan');?>/<?=$k->id?>"><?=$k->kategori?></a>
+                        <?php } ?>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -98,7 +105,7 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                        <b><?= $nama->nama ?></b>
+                        <b><?= $nama->prodi ?></b>
                         </div>
                     </form>
 
@@ -144,7 +151,6 @@
                                 <h6 class="dropdown-header">
                                     Profile Center
                                 </h6>
-                                
                                 <a class="dropdown-item d-flex align-items-center" href="<?= base_url('Welcome/changePass');?>">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-success">

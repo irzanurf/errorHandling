@@ -17,6 +17,11 @@
                             <div class="form-group">
                                     <input type="hidden" class="form-control" name="id" value=<?= $view->id?>  >
                             </div>
+
+                            <div class="form-group">
+                                    <label>Kategori</label>
+                                    <input class="form-control" value="<?= $view->kategori?>" readonly>
+                            </div>
                                 
                             <div class="form-group">
                                     <label>Pengirim</label>

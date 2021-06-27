@@ -18,6 +18,11 @@
                             <div class="form-group">
                                     <input type="hidden" class="form-control" name="id" value=<?= $view->id?>  >
                             </div>
+
+                            <div class="form-group">
+                                    <label>Kategori</label>
+                                    <input class="form-control" value="<?= $view->kategori?>" readonly>
+                            </div>
                                 
                             <div class="form-group">
                                     <label>Pengirim</label>
@@ -47,7 +52,7 @@
                             <br><h4>Balas Pesan Pengaduan</h4>
                             
                             <div class="form-group">
-                                <label>Balas</label>
+                                <label>Balas</label><label style="color:red; font-size:12px;"> (*Wajib diisi)</label>
                                 <textarea name="balas" id="editor1" rows="20" required=""></textarea>
                             </div>
 

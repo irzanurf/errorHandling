@@ -13,7 +13,11 @@
     </div>
     <div class="col-lg-8" style="float:none;margin:auto;">
     <!-- /.row -->
-    
+                            <div class="form-group">
+                                    <label>Kategori</label>
+                                    <input class="form-control" value="<?= $view->kategori?>" readonly>
+                            </div>
+
                             <div class="form-group">
                                     <label>Dosen</label>
                                     <input class="form-control" value="<?= $view->nama?>" readonly>

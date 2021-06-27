@@ -26,6 +26,8 @@ class Welcome extends CI_Controller {
                     redirect('Dosen');
                 }else if($this->session->userdata("role") == "3"){
                     redirect('Mhs');
+                }else if($this->session->userdata("role") == "4"){
+                    redirect('Departemen');
                 }
 
             }
@@ -48,6 +50,8 @@ class Welcome extends CI_Controller {
                     redirect('Dosen');
                 }else if($this->session->userdata("role") == "3"){
                     redirect('Mhs');
+                }else if($this->session->userdata("role") == "4"){
+                    redirect('Departemen');
                 }
 
             }
@@ -93,7 +97,9 @@ class Welcome extends CI_Controller {
 							redirect('Dosen');
 						}else if($this->session->userdata("role") == "3"){
 							redirect('Mhs');
-						}
+						}else if($this->session->userdata("role") == "4"){
+                            redirect('Departemen');
+                        }
 
                     }
                 }else{

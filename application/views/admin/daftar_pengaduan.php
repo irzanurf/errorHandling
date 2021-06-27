@@ -16,6 +16,7 @@
                                     <thead>
                                         <tr>
                                             <th>Tgl Pengaduan</th>
+                                            <th>Kategori</th>
                                             <th>Pengirim</th>
                                             <th>Tujuan</th>
                                             <th>Subjek</th>
@@ -34,6 +35,7 @@
                                         $tgl_kirim = date('d-m-Y', strtotime($v->tgl_kirim));?>
                                         <tr>
                                             <td><?= $tgl_kirim ?></td>
+                                            <td><?= $v->kategori ?></td>
                                             <td><?= $v->mhs ?></td>
                                             <td><?= $v->dsn ?></td>
                                             <td><?= $v->subjek ?></td>

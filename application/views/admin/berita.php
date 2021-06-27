@@ -9,7 +9,7 @@
     </div>
     <div class="col-lg-8" style="float:none;margin:auto;">
     <!-- /.row -->
-    <?= form_open_multipart('Admin/updateBerita');?>
+    <form action="<?= base_url('Admin/updateBerita');?>" method="post" enctype="multipart/form-data">
                                 
                                 <div class="form-group">
                                 <textarea name="content" id="editor" rows="20"><?= $berita->pengumuman?></textarea><br/>

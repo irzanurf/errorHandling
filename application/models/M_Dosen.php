@@ -4,9 +4,8 @@ class M_Dosen extends CI_Model
 {
     public function getwhere_dosen(array $data)
     {
-        $query = $this->db->select('tb_dosen.*,tb_prodi.prodi as prod')
+        $query = $this->db->select('tb_dosen.*')
         ->from('tb_dosen')
-        ->join('tb_prodi','tb_dosen.prodi=tb_prodi.id','inner')
         ->where($data)
         ->get();
         return $query;
@@ -14,12 +13,30 @@ class M_Dosen extends CI_Model
     
     public function get_dosen()
     {
+        $query = $this->db->select('*')
+        ->from('tb_dosen')
+        ->get();
+        return $query;
+    }
+
+    public function getprodi_dosen(array $data)
+    {
         $query = $this->db->select('tb_dosen.*,tb_prodi.prodi as prod')
         ->from('tb_dosen')
         ->join('tb_prodi','tb_dosen.prodi=tb_prodi.id','inner')
+        ->where($data)
         ->get();
         return $query;
-        
+    }
+
+    public function getview_dosen(array $data)
+    {
+        $query = $this->db->select('tb_dosprod.*,tb_dosen.nama,tb_dosen.username')
+        ->from('tb_dosprod')
+        ->join('tb_dosen','tb_dosprod.dosen=tb_dosen.username','inner')
+        ->where($data)
+        ->get();
+        return $query;
     }
 
     public function insert_dosen($dosen,$username)
@@ -73,6 +90,28 @@ class M_Dosen extends CI_Model
         $this->db->update('tb_dosen', $dosen);
         
     }
+
+    public function prodi($data_prodi)
+    {
+        $this->db->insert_batch('tb_dosprod', $data_prodi);
+    }
+
+    public function nilai_prodi($username)
+    {
+        $query = $this->db->select('tb_dosprod.*, tb_prodi.prodi as prod')
+                        ->from('tb_dosprod')
+                        ->join('tb_prodi','tb_dosprod.prodi=tb_prodi.id','inner')
+                        ->where('tb_dosprod.dosen',"$username")
+                        ->get();
+        return $query;
+    }
+
+    public function delete_dosen_prodi($data)
+    {
+        $query = $this->db->delete('tb_dosprod',$data);
+        return $query;
+    }
+
 
     
 }

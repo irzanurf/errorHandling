@@ -55,7 +55,7 @@
     
 </head>
 
-<body id="page-top" style="background-image: url('<?php echo base_url('assets/login/background.png'); ?>');background-size: cover;">
+<body id="page-top" style="background-image: url('<?php echo base_url('assets/login/background.jpg'); ?>');background-size: cover;">
     <div class="text-left flex-fill justify-content-center align-items-center align-content-center align-self-center login-card" style="background-color: rgba(247,247,247,0.51);">
     
     <h1 style="text-align:center; color:black">Ganti Password</h1>

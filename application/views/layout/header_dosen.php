@@ -32,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="background-image : linear-gradient(90deg,#1499ad 20%,#4e73df 100%);" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="welcome">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('/');?>">
                 <div class="sidebar-brand-icon">
                 <img src="<?= base_url('assets/undip.png');?>" alt="logo" width="47" height="54"/>
                 </div>
@@ -138,17 +138,7 @@
                                 <h6 class="dropdown-header">
                                     Profile Center
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="<?= base_url('Welcome/profile');?>">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-user text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500"></div>
-                                        User Profile
-                                    </div>
-                                </a>
+                                
                                 <a class="dropdown-item d-flex align-items-center" href="<?= base_url('Welcome/changePass');?>">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-success">

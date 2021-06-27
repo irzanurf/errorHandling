@@ -14,15 +14,15 @@
     <div class="col-lg-8" style="float:none;margin:auto;">
     <!-- /.row -->
     <form action="<?= base_url('Mhs/add_pengaduan');?>" method="post" enctype="multipart/form-data">
-                                
-                            <div class="form-group">
-                                    <label>Dosen</label>
-                                    <select class="chosen-select-width" name="dosen" required="">
+
+                             <div class="form-group">
+                                    <label>Kategori</label><label style="color:red; font-size:12px;"> (*Wajib diisi)</label>
+                                    <select class="chosen-select-width" name="kategori" required="">
                                         <option value="">Please Select</option>
                                         <?php
-                                        foreach ($dosen as $ds) {
+                                        foreach ($kategori as $k) {
                                             ?>
-                                           <option value="<?php echo $ds->username; ?>"><?php echo $ds->nama; ?> - <?php echo $ds->prodi; ?></option>
+                                           <option value="<?php echo $k->id; ?>"><?php echo $k->kategori; ?></option>
                                             <?php
                                         }
                                         ?>
@@ -30,12 +30,26 @@
                             </div>
 
                             <div class="form-group">
-                                    <label>Subjek</label>
+                                    <label>Dosen</label><label style="color:red; font-size:12px;"> (*Wajib diisi)</label>
+                                    <select class="chosen-select-width" name="dosen" required="">
+                                        <option value="">Please Select</option>
+                                        <?php
+                                        foreach ($dosen as $ds) {
+                                            ?>
+                                           <option value="<?php echo $ds->username; ?>"><?php echo $ds->nama; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                            </div>
+
+                            <div class="form-group">
+                                    <label>Subjek</label><label style="color:red; font-size:12px;"> (*Wajib diisi)</label>
                                     <textarea class="form-control" name="subjek" row="2" required=""></textarea>
                                 </div>
 
                             <div class="form-group">
-                            <label>Pengaduan</label>
+                            <label>Pengaduan</label><label style="color:red; font-size:12px;"> (*Wajib diisi)</label>
                                 <textarea name="pengaduan" id="editor" rows="20" required=""></textarea><br/>
                                 </div>
                             
