@@ -18,7 +18,7 @@ input[type=number]::-webkit-outer-spin-button {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistem Pengaduan</title>
+    <title>SiKoma</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/main/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet" type="text/css">
@@ -44,11 +44,12 @@ input[type=number]::-webkit-outer-spin-button {
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image" style=" background: url(<?php echo base_url('assets/front.png'); ?>); "></div>
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image" style=" background: url(<?php echo base_url('assets/front.png'); ?>); background-repeat: no-repeat;background-size: cover; "></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome</h1>
+                                        <h6 class="h6 text-gray-900 mb-4">Sistem Komplain Mahasiswa (SiKoma)</h6>
                                     </div>
                                     <div class="text-justify">
                                         <span>Silahkan mengisi form dibawah ini untuk melakukan pengaduan, apabila sudah pernah melakukan pengisian silahakn login <a href="<?= base_url('Welcome/login');?>">disini</a></span>

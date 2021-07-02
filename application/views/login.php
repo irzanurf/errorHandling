@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Sistem Pengaduan</title>
+    <title>SiKoma</title>
     <link rel="shortcut icon" href="<?= base_url('assets/sitedi.png');?>" width="20" height="20">
     <link rel="stylesheet" href="<?php echo base_url ('assets/login/bootstrap/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
@@ -14,7 +14,7 @@
 </head>
 <body id="page-top" style="background-image: url('<?php echo base_url('assets/login/background.jpg'); ?>');background-size: cover;">
     <div class="text-left flex-fill justify-content-center align-items-center align-content-center align-self-center login-card" style="background-color: rgba(247,247,247,0.51);">
-    <h1 style="text-align:center; color:black">Sistem Pengaduan</h1>
+    <h1 style="text-align:center; color:black">SiKoma</h1>
     <img class="profile-img-card" src="<?php echo base_url('assets/login/img/avatar_2x.png'); ?>">
     <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}?>    
     <p class="profile-name-card"> </p>

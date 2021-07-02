@@ -35,7 +35,6 @@ class Mhs extends CI_Controller {
         $username = $this->session->userdata('username');
         $prodi = $this->M_Pengumuman->get_prodi(array('username'=>$username))->row()->prodi;
         $cek = $data['dosen']= $this->M_Dosen->getview_dosen(array('tb_dosprod.prodi'=>$prodi))->result();
-        print_r($cek);
         $data['kategori']= $this->M_Kategori->get_kategori()->result();
         $nama['nama'] = $this->M_Pengumuman->get_mhs(array('username'=>$username))->row();
         $this->load->view('layout/header_mhs', $nama);
